@@ -32,10 +32,10 @@ canonifyurls = true
 [author]
   name = "tianpeng du"
   bio = "flow me study about k8s"
-  job = "paas developer"
+  job = "devops、pass"
   location = "BeiJing"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
-  gravatarEmail = "leave24534@gmail.com"
+  #gravatarEmail = "leave24534@gmail.com"
   # Your profile picture
   # Overwritten by your gravatar image if `author.gravatarEmail` is filled
   picture = "https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png"
