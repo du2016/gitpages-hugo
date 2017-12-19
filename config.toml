@@ -17,7 +17,6 @@ languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 title = "tianpeng du's blog"
 theme = "hugo-tranquilpeak-theme"
-#disqusShortname = "rocdu"
 # googleAnalytics = "UA-123-45"
 paginate = 7
 canonifyurls = true
@@ -107,6 +106,7 @@ canonifyurls = true
   # Global keywords configuration. Following keywords will be add to every pages
   # keywords = ["development", "next-gen"]
 
+  comments = true
   # Syntax highlighter, possible choice between: "highlight.js" (recommanded) and "prism.js" (experimental)
   # You can comment it to disable syntax highlighting
   syntaxHighlighter = "highlight.js"
