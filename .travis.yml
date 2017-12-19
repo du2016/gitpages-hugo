@@ -11,4 +11,4 @@ before_install:
 - cp .travis/ssh_config ~/.ssh/config
 - git config --global user.name "leave24534@gmail.com"
 - git config --global user.email "du2016"
-- git clone https://github.com/du2016/du2016.github.io public
+- git clone git@github.com:du2016/du2016.github.io.git public
