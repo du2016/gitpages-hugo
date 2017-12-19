@@ -1,5 +1,5 @@
 #!/bin/bash
-hugo
+./hugo
 MSG=$1
 git add .
 git commit -m ${MSG}
