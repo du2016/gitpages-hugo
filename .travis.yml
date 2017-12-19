@@ -1,5 +1,14 @@
 language: go
-
 go:
-  - 1.9.1
+- 1.9.1
 os: osx
+before_install:
+- openssl aes-256-cbc -K $encrypted_72f4a4db791d_key -iv $encrypted_72f4a4db791d_iv
+  -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
+- cp .travis/ssh_config ~/.ssh/config
+- git config --global user.name "leave24534@gmail.com"
+- git config --global user.email "du2016"
+- git clone https://github.com/du2016/du2016.github.io public
