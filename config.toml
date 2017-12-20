@@ -31,7 +31,7 @@ canonifyurls = true
 
 [author]
   name = "tianpeng du"
-  bio = "论道云原生"
+  bio = "All in k8s,All in servicemesh"
   job = "devops"
   location = "BeiJing"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
