@@ -2,6 +2,8 @@
 title: "conduit 初探"
 date: 2017-12-18T19:10:02+08:00
 draft: false
+thumbnailImage: /img/conduit.png
+thumbnailImagePosition: left
 categories:
 - servicemesh
 tags:

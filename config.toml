@@ -31,7 +31,7 @@ canonifyurls = true
 
 [author]
   name = "tianpeng du"
-  bio = "flow me study about k8s"
+  bio = "论道云原生"
   job = "devops"
   location = "BeiJing"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
@@ -82,12 +82,12 @@ canonifyurls = true
   name = "GitHub"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-github\"></i>"
   url = "https://github.com/du2016"
-#[[menu.links]]
-#  weight = 2
-#  identifier = "stackoverflow"
-#  name = "Stack Overflow"
-#  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-stack-overflow\"></i>"
-#  url = "https://stackoverflow.com/users/636472/kakawait"
+[[menu.links]]
+  weight = 2
+  identifier = "wechat"
+  name = "Wechat"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-weixin\"></i>"
+  url = "https://rocdu.io/img/wechat.JPG"
 
 #[[menu.misc]]
 #  weight = 1
