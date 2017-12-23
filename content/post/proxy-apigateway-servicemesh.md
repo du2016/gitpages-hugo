@@ -2,6 +2,8 @@
 title: "代理、api网关与servicemesh"
 date: 2017-12-20T11:27:13+08:00
 draft: false
+thumbnailImage: https://www.financeplus.com/wp-content/uploads/2013/06/cloud-it-csp7010092-620.jpg
+thumbnailImagePosition: left
 categories:
 - servicemesh
 tags:
