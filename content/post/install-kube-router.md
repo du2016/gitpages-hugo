@@ -1,5 +1,5 @@
 ---
-title: "kube-router 安装指南"
+title: "kube-router 实战"
 date: 2017-12-24T15:27:54+08:00
 draft: false
 thumbnailImage: /img/kube-router.png
@@ -19,9 +19,9 @@ kube-router[官方文档](https://github.com/cloudnativelabs/kube-router/tree/ma
 
 #### 介绍
 kube-router 
-- 使用iptables实现网络策略限制. --run-router参数，可透传源IP。
-- 通过bgp实现路由策略.--run-firewall 参数
-- 通过lvs实现代理策略，比kube-proxy的ipvs要高效很多。 --run-service-proxy
+- 使用iptables实现网络策略限制。 --run-router参数，可透传源IP。
+- 通过bgp实现路由策略。 --run-firewall 参数
+- 通过lvs实现代理策略。 --run-service-proxy
 
 --run-firewall, --run-router, --run-service-proxy可以有选择地只启用kube-router所需的功能
 
@@ -33,6 +33,8 @@ kube-router
 [代理功能介绍](https://cloudnativelabs.github.io/post/2017-05-10-kube-network-service-proxy/)
 
 [网络策功能略介绍](https://cloudnativelabs.github.io/post/2017-05-1-kube-network-policies/)
+
+[Kube-router：在裸机上Kubernetes集群的高可用和可扩展性](http://dockone.io/article/2895)
 
 #### 查看CIDR划分
 
@@ -137,17 +139,24 @@ kubectl annotate service nginx "kube-router.io/service.scheduler=dh"
 
 #### network policy
 
+```
 kubectl annotate ns prod "net.beta.kubernetes.io/network-policy={\"ingress\":{\"isolation\":\"DefaultDeny\"}}"
-测试可以看到其他命名空间ping不通该命名空间
+#测试可以看到其他命名空间ping不通该命名空间
+```
  
-查看路由表
+#### 网络信息查看
+ 
+- 查看路由表
 
  ```
  ip route s
  ```
  
-查看bgp新信息
+- 查看bgp新信息
 
+[gobgp介绍](https://wenku.baidu.com/view/a0ae2c8db307e87100f6965d.html)
+
+[gobgp项目地址](https://github.com/osrg)
  ```
 #  kubectl --namespace=kube-system  exec -it  kube-router-pk7fs /bin/bash 
 #  gobgp neighbor -u 172.26.6.3 #从哪些IP获得更新
@@ -158,3 +167,7 @@ Peer          AS  Up/Down State       |#Received  Accepted
 *> 10.254.0.0/24        172.26.6.2                                01:03:24   [{Origin: i} {LocalPref: 100}]
 *> 10.254.2.0/24        172.26.6.3                                00:00:32   [{Origin: i}]
 ```
+
+# 总结
+
+kube-router相对于kube-proxy功能强大，现在还是Alpha版，大家可以在测试环境尝试。
