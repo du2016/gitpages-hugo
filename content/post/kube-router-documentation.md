@@ -13,7 +13,7 @@ tags:
 ## 体系结构
 
 
-Kube路由器是围绕观察者和控制器的概念而建立的。 观察者使用Kubernetes监视API来获取与创建，更新和删除Kubernetes对象有关的事件的通知。 每个观察者获取与特定API对象相关的通知。 在从API服务器接收事件时，观察者广播事件。 控制器注册以获取观察者的事件更新，并处理事件。
+Kube-router是围绕观察者和控制器的概念而建立的。 观察者使用Kubernetes监视API来获取与创建，更新和删除Kubernetes对象有关的事件的通知。 每个观察者获取与特定API对象相关的通知。 在从API服务器接收事件时，观察者广播事件。 控制器注册以获取观察者的事件更新，并处理事件。
 
 
 Kube-router由3个核心控制器和多个观察者组成，如下图所示。
@@ -67,7 +67,7 @@ https://cloudnativelabs.github.io/post/2017-05-10-kube-network-service-proxy/
 
 网络策略控制器负责从Kubernetes API服务器读取命名空间，网络策略和pod信息，并相应地配置iptables以向pod提供入口过滤.
 
-Kube-router支持networking.k8s.io/NetworkPolicy 接口 或网络策略V1/GA
+Kube-router支持networking.k8s.io/NetworkPolicy接口或网络策略V1/GA
 [semantics](https://github.com/kubernetes/kubernetes/pull/39164#issue-197243974)以及网络策略的beta语义
 
 请阅读博客网络策略控制器的设计细节
@@ -140,13 +140,13 @@ Usage of ./kube-router:
 
 ### 依赖
 
-- Kube-router需要访问kubernetes API服务器以获取有关Pod，服务，端点，网络策略等的信息。所需的最少信息是关于在何处访问kubernetes API服务器的详细信息. 这个信息可以通过`kube-router -master = http://192.168.1.99:8080 /`或`kube-router -kubeconfig=<kubeconfig文件路径>`传递。
+- Kube-router需要访问kubernetes API服务器以获取有关Pod，服务，端点，网络策略等的信息。所需的最少信息是关于在何处访问kubernetes API服务器的详细信息. 这个信息可以通过`kube-router --master=http://192.168.1.99:8080/`或`kube-router --kubeconfig=<kubeconfig文件路径>`传递。
 
 - 如果在节点上运行kube-router作为agent，则必须在每个节点上安装ipset软件包（当以守护进程集的形式运行时，容器映像将使用ipset预先打包）
 
-- 如果您选择使用kube-router进行pod-to-pod网络连接，则需要将Kubernetes控制器管理器通过传递`--allocate-node-cidrs = true`标志并提供`cluster-cidr`来配置分配pod CIDR。 （例如通过传递--cluster-cidr = 10.1.0.0 / 16）
+- 如果您选择使用kube-router进行pod-to-pod网络连接，则需要将Kubernetes控制器管理器通过传递`--allocate-node-cidrs=true`标志并提供`cluster-cidr`来配置分配pod CIDR。 （例如通过传递--cluster-cidr = 10.1.0.0 / 16）
 
-- 如果您选择以守护进程运行kube-router，那么kube-apiserver和kubelet必须以“--allow-privileged = true”选项运行
+- 如果您选择以守护进程运行kube-router，那么kube-apiserver和kubelet必须以“--allow-privileged=true”选项运行
 
 - 如果您选择使用kube-router作为pod-to-pod网络连接，则必须将Kubernetes集群配置为使用CNI网络插件。在每个节点上，CNI conf文件预计将以/etc/cni/net.d/10-kuberouter.conf的形式出现。应使用CNI插件和用于IPAM的“host-local”。示例conf文件，可以下载`wget -O /etc/cni/net.d/10-kuberouter.conf https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/cni/10-kuberouter .conf`
 
@@ -158,7 +158,7 @@ Usage of ./kube-router:
 kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kube-router-all-service-daemonset.yaml
 ```
 
-以上将自动在每个节点上运行kube-router作为pod。您可以根据需要更改daemonset中定义的参数以匹配您的需要。有些示例可以在https://github.com/cloudnativelabs/kube-router/tree/master/daemonset中找到，使用不同的参数来选择kube-router应运行的服务.
+以上将自动在每个节点上运行kube-router作为pod。您可以根据需要更改daemonset中定义的参数以匹配您的需要。有些示例可以在`https://github.com/cloudnativelabs/kube-router/tree/master/daemonset`中找到，使用不同的参数来选择kube-router应运行的服务.
 
 ### 作为agent运行
 
@@ -189,14 +189,15 @@ kube-router --master=http://192.168.1.99:8080/ --run-service-proxy=true --run-fi
  kube-router --cleanup-config
 ```
 并使用您的配置运行kube-proxy。
+
 - [一般步骤](/README.md#getting-started)
 
-### 发夹模式
+### Hairpin Mode
 
 从service后面的Pod到其自己的ClusterIP:PORT的通信
-默认不支持。不过，可以通过对每个服务添加`kube-router.io / service.hairpin =`注释，或者通过集群中的所有服务启动。
+默认不支持。不过，可以通过对每个服务添加`kube-router.io/service.hairpin=`注释，或者通过集群中的所有服务启动。
 
-另外, 对于每个节点上的所有veth接口，`hairpin_mode` sysctl选项必须设置为`1`.  这可以通过在您的CNI配置中添加`“hairpinMode”：true`选项来完成，如果所有集群节点已经在运行kubernetes。
+另外, 对于每个节点上的所有veth接口，`hairpin_mode`sysctl选项必须设置为`1`. 这可以通过在您的CNI配置中添加`“hairpinMode”：true`选项来完成，如果所有集群节点已经在运行kubernetes。
 
 如果发送源IP来自Service ClusterIP，Hairpin traffic将被发现的发送点看到。
 
@@ -242,7 +243,8 @@ kubectl annotate service my-service "kube-router.io/service.dsr=tunnel"
 
 上述更改需要kube-router输入pod namespace，并在pod中创建ipip隧道，并将外部IP分配给VIP。 
 
-对于示例清单，请查看启用DSR要求的[manifest]（../ daemonset / kubeadm-kuberouter-all-features-dsr.yaml）.
+对于示例清单，请查看启用DSR要求的 [manifest]("../ daemonset / kubeadm-kuberouter-all-features-dsr.yaml")
+
 
 ### 负载均衡调度算法
 
