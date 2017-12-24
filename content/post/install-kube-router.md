@@ -10,15 +10,29 @@ tags:
 - k8s
 - kube-router
 ---
-# kube-router
+# kube-router 实战
 
 [官网](https://www.kube-router.io/)
 
 kube-router[官方文档](https://github.com/cloudnativelabs/kube-router/tree/master/Documentation)
-
 中文版[文档](https://rocdu.io/2017/12/%E8%AF%91kube-router-documentation/)
 
-## 需要有一个k8s集群
+#### 介绍
+kube-router 
+- 使用iptables实现网络策略限制. --run-router参数，可透传源IP。
+- 通过bgp实现路由策略.--run-firewall 参数
+- 通过lvs实现代理策略，比kube-proxy的ipvs要高效很多。 --run-service-proxy
+
+--run-firewall, --run-router, --run-service-proxy可以有选择地只启用kube-router所需的功能
+
+- 只提供入口防火墙：--run-firewall=true --run-service-proxy=false --run-router=false
+- 仅仅替换kube-proxy: --run-service-proxy=true --run-firewall=false --run-router=false
+
+[网络功能介绍](https://cloudnativelabs.github.io/post/2017-05-22-kube-pod-networking/)
+
+[代理功能介绍](https://cloudnativelabs.github.io/post/2017-05-10-kube-network-service-proxy/)
+
+[网络策功能略介绍](https://cloudnativelabs.github.io/post/2017-05-1-kube-network-policies/)
 
 #### 查看CIDR划分
 
@@ -30,16 +44,16 @@ kubectl get nodes -o json | jq '.items[] | .spec'
 
 #### 依赖
 
-- 现有k8s集群
+- 已有k8s集群
 - kube-router 能够连接apiserver
-- controller-manager必要配置参数 --allocate-node-cidrs=true --cluster-cidr=10.253.0.0/16,例如：
+- controller-manager必要配置参数 --allocate-node-cidrs=true --cluster-cidr=10.254.0.0/16,示例：
 ```
 /usr/local/bin/kube-controller-manager --logtostderr=true --v=0 --master=http://127.0.0.1:8080 --address=127.0.0.1 --allocate-node-cidrs=true --cluster-cidr=10.254.0.0/16 --node-cidr-mask-size=24 --cluster-name=kubernetes --use-service-account-credentials  --cluster-signing-cert-file=/etc/kubernetes/ssl/ca.pem --cluster-signing-key-file=/etc/kubernetes/ssl/ca-key.pem --service-account-private-key-file=/etc/kubernetes/ssl/ca-key.pem --root-ca-file=/etc/kubernetes/ssl/ca.pem --leader-elect=true
 ```
 - 直接在主机运行需要有ipset命令
 - 以daemonseset 运行需要开启--allow-privileged=true
 - 默认情况下pod并不能访问所属的svc，想要访问需要开启发夹模式,[介绍](http://www.bubuko.com/infodetail-1994270.html)
-- 需要在kube-router守护进程清单中启用hostIPC：true和hostPID：true。并且必须将主路径/var/run/docker.sock
+- 需要在kube-router守护进程清单中启用hostIPC：true和hostPID：true。并且必须将主路径/var/run/docker.sock设置为volumemount.
 ```
 hairpin_mode 网络虚拟化技术中的概念，也即交换机端口的VEPA模式。这种技术借助物理交换机解决了虚拟机间流量转发问题。很显然，这种情况下，源和目标都在一个方向，所以就是从哪里进从哪里出的模式
 ```
@@ -115,15 +129,23 @@ TCP  10.254.102.188:80 rr
 可以看到不仅有虚拟IP条目，还多了对应主机的lvs条目
 ```
 
+- 更改算法
+
+```
+kubectl annotate service nginx "kube-router.io/service.scheduler=dh"
+```
+
 #### network policy
 
 kubectl annotate ns prod "net.beta.kubernetes.io/network-policy={\"ingress\":{\"isolation\":\"DefaultDeny\"}}"
 测试可以看到其他命名空间ping不通该命名空间
  
- 查看路由表
+查看路由表
+
  ```
  ip route s
  ```
+ 
 查看bgp新信息
 
  ```
