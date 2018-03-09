@@ -1,7 +1,7 @@
 ---
-title: "使用ES做监控系统"
+title: "使用ES作为监控系统后端存储"
 date: 2018-01-29T14:14:46+08:00
-draft: true
+draft: false
 ---
 
 
@@ -24,3 +24,5 @@ draft: true
 
 ## 选择 query
 http_host:$servername
+
+![](/img/es-monitor-query.png)
