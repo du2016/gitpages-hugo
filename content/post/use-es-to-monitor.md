@@ -2,6 +2,11 @@
 title: "使用ES作为监控系统后端存储"
 date: 2018-01-29T14:14:46+08:00
 draft: false
+categories:
+- es
+tags:
+- es
+- monitor
 ---
 
 

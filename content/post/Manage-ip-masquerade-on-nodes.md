@@ -2,6 +2,11 @@
 title: "管理pod的nat策略"
 date: 2018-03-09T10:59:45+08:00
 draft: false
+categories:
+- kubernetes
+tags:
+- k8s
+- network
 ---
 
 # 关闭docker及flannel的snat策略

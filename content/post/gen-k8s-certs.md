@@ -4,6 +4,10 @@ date: 2017-12-28T17:59:32+08:00
 draft: false
 thumbnailImage: /img/kubernetes.png
 thumbnailImagePosition: left
+categories:
+- kubernetes
+tags:
+- k8s
 ---
 
 # 生成证书
