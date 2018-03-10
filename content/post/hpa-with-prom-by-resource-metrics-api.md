@@ -392,10 +392,17 @@ Events:
 
 # 参考
 https://github.com/kubernetes/metrics
+
 https://github.com/kubernetes-incubator/custom-metrics-apiserver
+
 https://github.com/kubernetes-incubator/metrics-server
+
 https://kubernetes.io/docs/tasks/debug-application-cluster/core-metrics-pipeline/
+
 https://github.com/kubernetes/community/blob/master/contributors/design-proposals/instrumentation/resource-metrics-api.md
+
 https://github.com/kubernetes/community/blob/master/contributors/design-proposals/instrumentation/metrics-server.md
+
 https://github.com/stefanprodan/k8s-prom-hpa
+
 https://github.com/DirectXMan12/k8s-prometheus-adapter
