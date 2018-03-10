@@ -4,6 +4,11 @@ date: 2018-01-12T15:54:43+08:00
 draft: false
 thumbnailImage: /img/calico.png
 thumbnailImagePosition: left
+categories:
+- kubernetes
+tags:
+- k8s
+- network
 ---
 
 [calico](https://github.com/projectcalico)是一个安全的 L3 网络和网络策略提供者。
