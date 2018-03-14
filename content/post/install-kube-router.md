@@ -171,3 +171,6 @@ Peer          AS  Up/Down State       |#Received  Accepted
 # 总结
 
 kube-router相对于kube-proxy功能强大，现在还是Alpha版，大家可以在测试环境尝试。
+
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

@@ -163,3 +163,4 @@ travis-ci是一个基于github的持续集成工具，可以在更新代码后�
 在readme里面加一行[![Build Status](https://travis-ci.org/du2016/gitpages-hugo.svg?branch=master)](https://travis-ci.org/du2016/gitpages-hugo) 就可以展示build状态，有木有很爽。
 
 
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

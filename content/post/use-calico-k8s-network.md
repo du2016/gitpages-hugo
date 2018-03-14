@@ -240,3 +240,5 @@ EOF
 calicoctl delete bgpPeer aa:bb::ff --scope=node --node=node1
 calicoctl get bgpPeer
 ```
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

@@ -88,3 +88,5 @@ conduit仅支持http/2流量，绕过代理：
 ```
 conduit inject deployment.yml --skip-inbound-ports=80,7777 | kubectl apply -f -
 ```
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

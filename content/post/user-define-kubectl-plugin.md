@@ -98,3 +98,6 @@ tree:                             # 允许子命令的声明
 
 - KUBECTL_PLUGINS_LOCAL_FLAG_*: plugin.yaml 描述符中声明的每个本地参数对应的一个环境变量。例如，前面的 targaryen 示例中的 KUBECTL_PLUGINS_LOCAL_FLAG_HEAT。
 
+
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

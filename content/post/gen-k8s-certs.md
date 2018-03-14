@@ -267,3 +267,5 @@ openssl genrsa -out admin.key 2048
 openssl req -new -key admin.key -out admin.csr -subj "/O=system:masters/CN=dmin"
 openssl x509 -req -set_serial $(date +%s%N) -in admin.csr -CA ca.crt -CAkey ca.key -out admin.crt -days 365 -extensions v3_req -extfile req.conf
 ```
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

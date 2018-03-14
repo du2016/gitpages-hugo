@@ -406,3 +406,6 @@ https://github.com/kubernetes/community/blob/master/contributors/design-proposal
 https://github.com/stefanprodan/k8s-prom-hpa
 
 https://github.com/DirectXMan12/k8s-prometheus-adapter
+
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

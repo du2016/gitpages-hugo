@@ -31,3 +31,6 @@ tags:
 http_host:$servername
 
 ![](/img/es-monitor-query.png)
+
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

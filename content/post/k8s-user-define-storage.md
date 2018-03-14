@@ -360,3 +360,6 @@ https://github.com/kubernetes/community/blob/master/contributors/design-proposal
 http://blog.kubernetes.io/2018/01/introducing-container-storage-interface.html
 https://github.com/container-storage-interface
 https://kubernetes-csi.github.io/docs/
+
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

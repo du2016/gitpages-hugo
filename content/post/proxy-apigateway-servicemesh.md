@@ -99,3 +99,6 @@ tags:
 # 最终的目标：
 
 ## 应用部署层all in k8s,应用逻辑层all in servicemesh.
+
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

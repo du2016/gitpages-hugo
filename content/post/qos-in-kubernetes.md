@@ -106,3 +106,6 @@ func GetContainerOOMScoreAdjust(pod *v1.Pod, container *v1.Container, memoryCapa
 	return int(oomScoreAdjust)
 }
 ```
+
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术

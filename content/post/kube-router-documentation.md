@@ -267,3 +267,5 @@ kubectl annotate service my-service "kube-router.io/service.scheduler=dh"
 ## BGP 配置
 
 [Configuring BGP Peers](bgp.md)
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术
