@@ -353,3 +353,4 @@ func bind(b *v1.Binding) error {
 参考：
 https://github.com/kubernetes/community/blob/master/contributors/devel/scheduler.md
 https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md
+https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
