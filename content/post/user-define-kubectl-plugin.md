@@ -18,7 +18,7 @@ kubectl-plugins 是在 v1.8.0 发行版中作为 alpha 功能正式引入的。
 因此您有责任将插件文件放在正确的位置。我们建议每个插件都位于自己的目录下，
 因此安装一个以压缩文件形式发布的插件就像将其解压到 插件加载器 部分指定的某个位置一样简单。
 
-## 插件加载器
+# 插件加载器
 
 插件加载器负责在下面指定的文件系统位置搜索插件文件，并检查插件是否提供运行所需的最小信息量。放在正确位置但未提供最少信息的文件将被忽略，例如没有不完整的 plugin.yaml 描述符。
 
@@ -68,7 +68,7 @@ tree:                             # 允许子命令的声明
 上面的描述符声明了 kubectl plugin targaryen 插件，它有一个名为 -h | --heat 的参数。 当插件被调用时，它会调用与描述符文件位于同一目录中的 dracarys 二进制文件或脚本。 访问运行时属性 部分描述了 dracarys 命令如何访问参数值和其他运行时上下文。
 
 
-### 推荐的目录结构
+## 推荐的目录结构
 建议每个插件在文件系统中都有自己的子目录，最好使用与插件命令相同的名称。该目录必须包含 plugin.yaml 描述符以及它可能需要的任何二进制文件、脚本、资产或其他依赖项。
 
 例如，targaryen 插件的目录结构可能如下所示：
@@ -80,7 +80,7 @@ tree:                             # 允许子命令的声明
     └── dracarys
 ```
 
-###访问运行时属性
+# 访问运行时属性
 
 在大多数使用情况下，您为编写插件而编写的二进制文件或脚本文件必须能够访问由插件框架提供的一些上下文信息。例如，如果您在描述符文件中声明了参数，则您的插件必须能够在运行时访问用户提供的参数值。全局标志也是如此。插件框架负责做这件事，所以插件编写者不需要担心解析参数。这也确保了插件和常规 kubectl 命令之间的最佳一致性。
 
@@ -96,7 +96,7 @@ tree:                             # 允许子命令的声明
 
 - KUBECTL_PLUGINS_GLOBAL_FLAG_*: kubectl 支持的每个全局参数对应的一个环境变量。 例如，KUBECTL_PLUGINS_GLOBAL_FLAG_NAMESPACE ， KUBECTL_PLUGINS_GLOBAL_FLAG_V。
 
-- KUBECTL_PLUGINS_LOCAL_FLAG_*: plugin.yaml 描述符中声明的每个本地参数对应的一个环境变量。例如，前面的 targaryen 示例中的 KUBECTL_PLUGINS_LOCAL_FLAG_HEAT。
+- KUBECTL_PLUGINS_LOCAL_FLAG_*: plugin.yaml 描述符中声明的每个本地参数对应的一个环境变量。例如前面的 targaryen 示例中的 KUBECTL_PLUGINS_LOCAL_FLAG_HEAT。
 
 
 
