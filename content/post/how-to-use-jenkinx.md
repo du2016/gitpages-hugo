@@ -63,3 +63,16 @@ jx create cluster aws
 ```bash
 jx create cluster minikube
 ```
+
+# 在已有k8s集群安装
+
+## 安装minikube
+
+```
+minikube start --vm-driver vmwarefusion
+```
+## 安装jenkins-x
+
+```
+jx install
+```
