@@ -355,3 +355,5 @@ https://github.com/kubernetes/community/blob/master/contributors/devel/scheduler
 https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md
 https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 https://github.com/kubernetes/kubernetes-docs-cn/blob/master/docs/concepts/overview/extending.md
+
+欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术
