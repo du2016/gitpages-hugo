@@ -358,4 +358,3 @@ https://kubernetes.io/docs/concepts/overview/extending/
 https://github.com/kubernetes/kubernetes-docs-cn/blob/master/docs/concepts/overview/extending.md
 
 欢迎加入QQ群：k8s开发与实践（482956822）一起交流k8s技术
->>>>>>> 2467cba2ee79808e1d06a1d5d68ad04c09e58d3e
