@@ -102,7 +102,7 @@ gitment是[imsun](https://github.com/imsun/gitment)大神写的基于github oaut
 
 [这里](https://imsun.net/posts/gitment-introduction/#more)是作者写的如何使用gitment搭建博客系统的文章。
 
-使用gitment需要在github上面生成[oauth id](https://github.com/settings/applications/new),需要注意的是Authorization callback URL和Homepage URL都要写上你网站对应的真实url例如我的https://rocdu.io。
+使用gitment需要在github上面生成[oauth id](https://github.com/settings/applications/new),需要注意的是Authorization callback URL和Homepage URL都要写上你网站对应的真实url例如我的https://du2016.github.io。
 
 gitment模板配置
 ```
