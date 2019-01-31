@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -rf public/*
 ./hugo
 cd public
 git add .
