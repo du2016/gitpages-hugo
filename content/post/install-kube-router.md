@@ -15,7 +15,7 @@ tags:
 [官网](https://www.kube-router.io/)
 
 kube-router[官方文档](https://github.com/cloudnativelabs/kube-router/tree/master/Documentation)
-中文版[文档](https://rocdu.io/2017/12/%E8%AF%91kube-router-documentation/)
+中文版[文档](https://du2016.github.io/2017/12/%E8%AF%91kube-router-documentation/)
 
 #### 介绍
 kube-router 
