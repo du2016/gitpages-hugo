@@ -7,17 +7,17 @@ categories:
 tags:
 - k8s
 ---
-# 简介
-Metacontroller是GKE为k8s开发的一个附加组件，用简单的脚本便可以方便的管理自定义控制器。
+## 简介
+[Metacontroller](https://metacontroller.app/)是GKE为k8s开发的一个附加组件，用简单的脚本便可以方便的管理自定义控制器。
 
-# 概念
+## 概念
 
 - CRD 自定义资源
 - Metacontroller Metacontroller控制器本身
 - DecoratorController Metacontroller中用于向现有资源添加新行为
 - CompositeController Metacontroller中用于通过父对象管理子对象
 
-# 安装
+## 安装
 
 ```bash
 # 创建命名空间
@@ -28,14 +28,14 @@ kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/metacontr
 kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/metacontroller/master/manifests/metacontroller.yaml
 ```
 
-# 创建一个控制器
+## 创建一个控制器
 
-## 目标
+### 目标
 
 通过HelloWorld自定义资源来创建pod，打印hello
 
 
-## 创建HelloWorld CRD
+### 创建HelloWorld CRD
 
 ```bash
 cat << EOF | kubectl apply -f -
@@ -54,7 +54,7 @@ spec:
 EOF
 ```
 
-## 创建CompositeController
+### 创建CompositeController
 
 ```
 cat << EOF | kubectl apply -f -
@@ -83,14 +83,15 @@ spec:
 EOF
 ```
 
-## 实现自己的webhook
+### 实现自己的webhook
 
-webhook流程
+#### webhook流程
 
 创建crd resource -->metacontroller收到变化通知--->发送crd和期望pod数量到webhook ---> 
 webhook解析crd返回pod列表,及请求状态（pod数量）--->metacontroller判断状态正常--->创建pod
 
-webhook示例：
+#### webhook示例：
+
 ```bash
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import json
