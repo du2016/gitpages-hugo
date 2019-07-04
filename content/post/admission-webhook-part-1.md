@@ -4,7 +4,7 @@ date: 2019-06-29T17:00:36+08:00
 draft: false
 ---
 
-# 简介
+### 简介
 
 Admission webhooks 是接收准入请求http回调并且进行处理，分为两种类型:
 
@@ -14,14 +14,14 @@ Admission webhooks 是接收准入请求http回调并且进行处理，分为两
 mutating admission webhook 先于validating admission Webhook被调用，可以由mutating admission webhook先对
 对象进行修改设置默认值，然后validating admission Webhook可以拒绝请求以执行自定义的 admission 策略
 
-# admission webhook controller 处理流程
+### admission webhook controller 处理流程
 
 接受请求-->解析成为AdmissionReview-->解析AdmissionRequest请求资源-->
 解析成期望的资源对象-->根据资源对象的现有数据生成pacher--->判断请求AdmissionReview是否包含UUID---返回AdmissionReview
 
-# 配置文件
+### 配置文件
 
-## 配置文件字段介绍
+#### 配置文件字段介绍
 ```yaml 
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingWebhookConfiguration
@@ -59,9 +59,7 @@ webhooks:
   sideEffects: # 明这个webhook是否有副作用，有效值 Unknown, None, Some, NoneOnDryRun，如果具有dryrun属性，切sideEffects为unknown或some，将自动拒绝执行。
 ```
 
-## 生成
-
-# 验证apiserver
+#### 验证apiserver
 
 认证类型：基本身份验证，不记名令牌、证书
 
