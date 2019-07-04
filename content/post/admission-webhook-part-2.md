@@ -116,8 +116,7 @@ webhooks:
       service:
         name: sidecar-injector-webhook-svc
         namespace: default
-        path: "/mutate"
-      caBundle: ${CA_BUNDLE}
+        path: "/mutating-pods"
     rules:
       - operations: [ "CREATE" ]
         apiGroups: [""]
@@ -192,6 +191,13 @@ func serve(w http.ResponseWriter, r *http.Request, admit admitFunc) {
 			body = data
 		}
 	}
+	
+    // 校验token
+    token:=r.Header.Get("Authorization")
+    if token!=fmt.Sprintf("Bearer %s",bearToken) {
+        klog.Errorf("unexpect bear token: %s", token)
+        return
+    }
 
 	// 校验content type 只接收json
 	contentType := r.Header.Get("Content-Type")
