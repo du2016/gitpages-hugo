@@ -12,14 +12,16 @@
 # For developpers, if you modify this theme, put your images in `source/images` folder and
 # use grunt task `build` to synchronize assets
 
-baseURL = "https://du2016.github.io"
+baseURL = "http://rocdu.top"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
-title = "tianpeng du's blog"
-theme = "hugo-tranquilpeak-theme"
+title = "rocdu's blog"
+theme = "beautifulhugo"
 # googleAnalytics = "UA-123-45"
 paginate = 7
 canonifyurls = true
+pygmentsCodeFences = true
+pygmentsUseClasses = true
 
 [permalinks]
   post = "/:year/:month/:slug/"
@@ -30,7 +32,7 @@ canonifyurls = true
   archive = "archives"
 
 [author]
-  name = "tianpeng du"
+  name = "rocdu"
   bio = "All in k8s,All in servicemesh"
   job = "devops"
   location = "BeiJing"
@@ -74,7 +76,7 @@ canonifyurls = true
   identifier = "about"
   name = "About"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
-  url = "/#about"
+  url = "/about"
 
 [[menu.links]]
   weight = 1
